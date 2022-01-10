@@ -44,3 +44,4 @@ class Review(models.Model):
     #writer  = models.ForeignKey(User, on_delete=models.CASCADE)
     hotel   = models.ForeignKey(Hotel, on_delete=models.CASCADE)
     rating  = models.IntegerField(default=3,validators=[MinValueValidator(0), MaxValueValidator(5)])
+    review  = models.TextField(default="Great",null=True)
