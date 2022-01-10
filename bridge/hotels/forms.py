@@ -10,7 +10,7 @@ Ratings =(
   
 
 
-class ContactForm(forms.Form):
+class RatingForm(forms.Form):
     name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Enter your Name'}))
-    review = forms.CharField(widget=forms.Textarea,widget=forms.TextInput(attrs={'placeholder': 'Enter your Review'}))
+    review = forms.CharField(widget=forms.Textarea)
     rating = forms.ChoiceField(choices = Ratings)
