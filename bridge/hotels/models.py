@@ -24,9 +24,9 @@ class Hotel(models.Model):
     class Meta:
         ordering = ['name']
 
-    def average_rating():
-        all_ratings = map(lambda x: x.rating, self.review_set.all())
-        return np.mean(all_ratings)
+    def average_rating(self):
+        all_ratings = list(map(lambda x: x.rating, self.review_set.all()))
+        return round(np.mean(all_ratings))
 
     def get_absolute_url(self):
         """Returns the url to access a particular instance of the model."""

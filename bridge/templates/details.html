@@ -41,7 +41,7 @@
 					<h1>{{ object.name }} </h1>
 					<h6 class="text-muted">{{ object.address }}</h6>
 					<!-- Here we will put the average rating of the hotel-->
-					<h4>Rating: {{ object.rating }}</h4>
+					<h5>Rating: </h4>
 					<p>
 						<!-- connect the google maps api -->
 					<ul>
@@ -56,13 +56,16 @@
 					<!-- carousel starts-->
 					<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
 						<div class="carousel-inner">
+							
+							{% for url in urls %}
+							{% if forloop.first %}
 							<div class="carousel-item active">
 								<img
-									src="{{url.0}}"
+									src="{{url}}"
 									class="d-block w-100"
 									/>
 							</div>
-							{% for url in urls %}
+							{% else %}
 							<div class="carousel-item">
 								<img
 									src="{{url}}"
@@ -72,6 +75,7 @@
 									width="auto"
 									/>
 							</div>
+							{% endif %}
 							{% endfor %}
 						</div>
 						<!-- start of the buttons-->
@@ -123,13 +127,17 @@
 								</div>
 								<button class="btn btn-primary" type="submit">Post review</button>
 							</form>
-                            <ul>
-                                {% for review in reviews %}
-                                <li><span>{{ review.rating }}</span></li>
-                                {% endfor %}
-                            </ul>
+                            
 						</div>
+
+						
 					</div>
+					<!-- end of review -->
+					<ul>
+						{% for review in reviews %}
+						<li><span>{{ review.rating }}</span> {{review.review }}</li>
+						{% endfor %}
+					</ul>
 				</div>
 				<!--end of col-->
 				<!--second col-->
