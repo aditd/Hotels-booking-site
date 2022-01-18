@@ -102,21 +102,13 @@
 									<div class="col-sm-6">
 										<div class="mb-4">
                                             {{ form.name|as_crispy_field }}
-											<!--<label class="form-label" for="name">Your name *</label>
-											<input class="form-control" type="text" name="name" id="name" placeholder="Enter your name" required="required">-->
+											
 										</div>
 									</div>
 									<div class="col-sm-6">
 										<div class="mb-4">
                                             {{ form.rating|as_crispy_field }}
-											<!--<label class="form-label" for="rating">Your rating *</label>
-											<select class="form-select focus-shadow-0" name="rating" id="rating">
-												<option value="5">★★★★★ (5/5)</option>
-												<option value="4">★★★★☆ (4/5)</option>
-												<option value="3">★★★☆☆ (3/5)</option>
-												<option value="2">★★☆☆☆ (2/5)</option>
-												<option value="1">★☆☆☆☆ (1/5)</option>
-											</select>-->
+											
 										</div>
 									</div>
 								</div>
@@ -132,12 +124,32 @@
 
 						
 					</div>
-					<!-- end of review -->
+					<!-- end of leave review -->
+					<!-- beginning of list of reviews-->
 					<ul>
 						{% for review in reviews %}
 						<li><span>{{ review.rating }}</span> {{review.review }}</li>
 						{% endfor %}
 					</ul>
+
+					<div id="recommendations">
+						<div class="row row-eq-height">
+							{% for recommendation in recommendations %}
+							<div class="col-md-6">
+								<div class="g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+								  	<div class="p-4 d-flex flex-column position-static">
+										<strong class="d-inline-block mb-2 text-primary">Recommended</strong>
+										<h3 class="mb-0">{{recommendation.name}}</h3>
+										<div class="mb-1 text-muted">&#8377 {{recommendation.price}}</div>
+										<p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+										<a href="{{recommendation.get_absolute_url}}" class="stretched-link">Visit</a>
+								  	</div>
+								  	
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+					</div>
 				</div>
 				<!--end of col-->
 				<!--second col-->
@@ -184,16 +196,6 @@
 		</div>
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-		<script>
-			function initMap() {
-			    var location = {
-			        lat: {{object.latitude}},
-			        lng: {{object.longitude}}
-			    }
-			    console.log("hello")
-			    console.log(location.lng)
-			}
-			initMap()
-		</script>
+		
 	</body>
 </html>
