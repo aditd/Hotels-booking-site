@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <style>
+
 		a:link,a:visited,a:hover,a:active {
             text-decoration: none;
             color:#4e66f8;
@@ -123,6 +124,19 @@
     }
 }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet"/>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+    <script>
+    
+    $( function() {
+    var availableTags = ["Kensington and Chelsea","Westminster Borough","Central London","Camden","West End","Kensington","Hyde Park","Tower Hamlets","Wimbledon","Wandsworth","Newham","Lewisham","Clerkenwell","Stratford","City of London","Shoreditch","Canary Wharf and Docklands","Regent's Park","Spitalfields","Hammersmith and Fulham","South Kensington","Paddington","Oxford Street","Wembley"];
+    $( "#form-autocomplete" ).autocomplete({
+      source: availableTags
+    });
+  } );
+    </script>
     <script src="https://kit.fontawesome.com/12ef10a30c.js" crossorigin="anonymous"></script>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -138,9 +152,11 @@
 		  	<!--start of search-->
 			  <div class="search">
 				<div class="row">
+                    
 					<div class="col-md-6">
-						<div class="search-1"> <i class='bx bx-search-alt'></i> <input type="text" placeholder="Location"> </div>
-					</div>
+						<div class="search-1"> <i class='bx bx-search-alt'></i> <input type="text" id="form-autocomplete" placeholder="Location"> </div>
+                        <div id="result"></div>
+                    </div>
 					<div class="col-md-6">
 						<div>
 							<div class="search-2"> <i class='bx bxs-map'></i> <input type="text" placeholder="Nights"> <button>Search</button> </div>
@@ -156,8 +172,6 @@
 	</div>
 
     <div class="container">
-		
-
         <h1>Places</h1>
 		<div class="row">
 
@@ -212,5 +226,6 @@
 
 		</div>
     </div>
+    
 </body>
 </html>
