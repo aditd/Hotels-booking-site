@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from .models import Hotel,Photo, Review
 from .forms import RatingForm, searchForm
 
+# possible london locations
+#location = ["Kensington and Chelsea","Westminster Borough","Central London","Camden","West End","Kensington","Hyde Park","Tower Hamlets","Wimbledon","Wandsworth","Newham","Lewisham","Clerkenwell","Stratford","City of London","Shoreditch","Canary Wharf and Docklands","Regent's Park","Spitalfields","Hammersmith and Fulham","South Kensington","Paddington","Oxford Street","Wembley"]
+
 # this helps in suggesting places withing a price range
 def priceRange(price):
 	diff = 1000
@@ -80,6 +83,8 @@ def hotel_search_view(request):
 			if form.cleaned_data['price_upper'] != None:
 				x=x.filter(price__lt=form.cleaned_data['price_upper'])
 			
+			if form.cleaned_data['neighbourhood'] != None:
+				x=x.filter(address__icontains=form.cleaned_data['neighbourhood'])
 
 			#if the rating field isnt filled
 			if form.cleaned_data['rating'] != None:

@@ -66,8 +66,8 @@
                     {{ form.free_wifi|as_crispy_field }}
                     {{ form.room_service|as_crispy_field }}
                     {{ form.dry_cleaning|as_crispy_field }}
-
                     <br>
+                    {{ form.neighbourhood|as_crispy_field }}
                     <!--<input list="browsers" name="browser">
                     <datalist id="browsers">
                         <option value="Internet Explorer">
@@ -79,6 +79,7 @@
 
 
             <div class="col-md-9">
+                {% if hotels %}
                 {% for hotel in hotels%}
                 <div class="row hotel">
                     <div class="col-4">
@@ -92,6 +93,9 @@
                     
                 </div>
                 {% endfor %}
+                {% else %}
+                <h1>No results</h1>
+                {% endif %}
             </div>
         </div>
     </div>
