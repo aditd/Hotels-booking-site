@@ -43,7 +43,6 @@
     width: 100%;
     padding-left: 34px;
     padding-right: 10px;
-    border-right: 2px solid #eee
 }
 
 .search-1 input:focus {
@@ -93,14 +92,13 @@
 }
 
 .search-2 button {
-    position: absolute;
     right: 1px;
     top: 0px;
     border: none;
     height: 45px;
     background-color: red;
     color: #fff;
-    width: 90px;
+    width: 100%;
     border-radius: 4px
 }
 
@@ -137,6 +135,7 @@
     });
   } );
     </script>
+
     <script src="https://kit.fontawesome.com/12ef10a30c.js" crossorigin="anonymous"></script>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -151,18 +150,13 @@
 			<p class="lead text-light fw-normal">Plan your Dream Holiday</p>
 		  	<!--start of search-->
 			  <div class="search">
-				<div class="row">
-                    
-					<div class="col-md-6">
-						<div class="search-1"> <i class='bx bx-search-alt'></i> <input type="text" id="form-autocomplete" placeholder="Location"> </div>
-                        <div id="result"></div>
+                <form action="{% url 'hotels:search' %}" >
+                    <div class="row">
+                        <div class="col-md-9 search-1"><input name="neighbourhood" type="text" id="form-autocomplete" placeholder="Location"> </div>
+                        <div class="col-md-3 search-2">  <button>Search</button> </div>
                     </div>
-					<div class="col-md-6">
-						<div>
-							<div class="search-2"> <i class='bx bxs-map'></i> <input type="text" placeholder="Nights"> <button>Search</button> </div>
-						</div>
-					</div>
-				</div>
+                </form>
+				
 			</div>
 			<!--end of search-->
 		</div>

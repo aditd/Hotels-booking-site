@@ -10,6 +10,9 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
 		<style>
+			ul{
+				list-style-type: none;
+			}
 			img {
 			height: 100%;
 			width: auto;
@@ -41,7 +44,16 @@
 					<h1>{{ object.name }} </h1>
 					<h6 class="text-muted">{{ object.address }}</h6>
 					<!-- Here we will put the average rating of the hotel-->
-					<h5>Rating: </h4>
+					<h5>
+					{% if object.average_rating %}
+
+					{% with ''|center:object.average_rating as range %}
+					{% for _ in range %}
+					<i class="fa fa-xs fa-star text-primary"></i>
+					{% endfor %}
+					{% endwith %}
+					{% endif %}
+					</h4>
 					<p>
 						<!-- connect the google maps api -->
 					<ul>
@@ -91,6 +103,26 @@
 					<!--end of carousel-->
                     {% load crispy_forms_tags %}
 
+
+					<!-- LIST OF REVIEWS-->
+					<!-- beginning of list of reviews-->
+					<h1> Reviews</h1>
+					<ul>
+						
+						{% for review in reviews %}
+						<li>
+							<h4>
+							{% with ''|center:object.average_rating as range %}
+							{% for _ in range %}
+							<i class="fa fa-xs fa-star text-primary"></i>
+							{% endfor %}
+							{% endwith %}
+							</h4>
+						{{review.review }}
+						</li>
+						{% endfor %}
+					</ul>
+
 					<!-- leave a review -->
 					<div class="py-5">
 						<button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#leaveReview" aria-expanded="false" aria-controls="leaveReview">Leave a review</button>
@@ -125,13 +157,9 @@
 						
 					</div>
 					<!-- end of leave review -->
-					<!-- beginning of list of reviews-->
-					<ul>
-						{% for review in reviews %}
-						<li><span>{{ review.rating }}</span> {{review.review }}</li>
-						{% endfor %}
-					</ul>
 
+					<h1>Recommendations </h1>
+					<br>
 					<div id="recommendations">
 						<div class="row row-eq-height">
 							{% for recommendation in recommendations %}

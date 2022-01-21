@@ -26,7 +26,10 @@ class Hotel(models.Model):
 
     def average_rating(self):
         all_ratings = list(map(lambda x: x.rating, self.review_set.all()))
-        return round(np.mean(all_ratings))
+        if all_ratings:
+            return round(np.mean(all_ratings))
+        else:
+            0
 
     def get_absolute_url(self):
         """Returns the url to access a particular instance of the model."""
